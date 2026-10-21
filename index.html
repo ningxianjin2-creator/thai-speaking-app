@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>泰语开口说 · 日常口语</title>
+<style>
+:root{--ink:#172b2b;--muted:#617574;--teal:#0f766e;--mint:#dff5ee;--paper:#f5faf8;--line:#dce9e5;--orange:#f2a65a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans SC",sans-serif}header{background:linear-gradient(135deg,#0b5d58,#159485);color:white;padding:25px 18px 30px;border-radius:0 0 26px 26px}header .eyebrow{font-size:12px;letter-spacing:2px;opacity:.8}h1{font-size:27px;margin:8px 0}header p{margin:0;font-size:14px;opacity:.9}.wrap{max-width:760px;margin:auto;padding:16px}.progress{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:8px 2px}.bar{height:6px;background:#e0ece8;border-radius:9px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:var(--teal);transition:width .2s}.filters{display:flex;gap:8px;overflow:auto;padding:15px 0 8px}.chip{border:1px solid var(--line);background:white;color:var(--muted);border-radius:30px;padding:9px 13px;white-space:nowrap;font-size:13px}.chip.active{background:var(--teal);color:white;border-color:var(--teal)}.card{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;margin:12px 0;box-shadow:0 8px 24px #124f3e0a}.topline{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.tag{background:var(--mint);color:#08685f;padding:5px 9px;border-radius:20px}.thai{font-size:30px;line-height:1.55;font-weight:750;margin:18px 0 6px;word-break:break-word}.roman{font-size:16px;color:#37756c;margin:0 0 8px}.meaning{font-size:18px;font-weight:650;margin:8px 0}.approx{font-size:13px;color:var(--muted);background:#f5f8f7;border-radius:10px;padding:10px 12px}.note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}.btn{border:0;border-radius:13px;padding:13px 10px;font-weight:650;font-size:14px;background:var(--mint);color:#075e56}.btn.primary{background:var(--teal);color:white}.btn.dark{background:#193e3a;color:white}.btn:active{transform:scale(.98)}.nav{display:flex;gap:10px;margin:12px 0}.nav .btn{flex:1}.section-title{font-size:17px;margin:22px 2px 8px}.list{display:grid;gap:8px}.lesson{display:flex;align-items:center;gap:12px;background:white;border:1px solid var(--line);border-radius:14px;padding:12px;text-align:left;width:100%;color:var(--ink)}.lesson .emoji{font-size:22px}.lesson small{display:block;color:var(--muted);margin-top:3px}.lesson strong{font-size:14px}.lesson .arrow{margin-left:auto;color:var(--teal)}footer{text-align:center;font-size:11px;color:var(--muted);padding:24px 0 34px}.smallbtn{background:transparent;border:1px solid var(--line);padding:7px 10px;border-radius:10px;color:var(--muted)}@media(min-width:600px){header{padding:34px calc((100% - 700px)/2) 38px}.thai{font-size:36px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">THAI SPEAKING · FIRST EDITION</div><h1>泰语开口说 🇹🇭</h1><p>每天学几句，去泰国更敢开口。</p></header>
+<main class="wrap">
+<div class="progress"><span id="lessonCount">第 1 句 · 共 0 句</span><span id="learnedCount">已学 0 句</span></div><div class="bar"><span id="progressBar"></span></div>
+<div class="filters" id="filters"></div>
+<section class="card" aria-live="polite">
+<div class="topline"><span id="sceneLabel">日常问候</span><span class="tag" id="levelTag">入门口语</span></div>
+<div class="thai" id="thaiText">สวัสดีครับ</div><p class="roman" id="romanText">sa-wat-dee khrap</p><p class="meaning" id="meaningText">你好（男性说法）</p><div class="approx" id="approxText">中文近似：萨瓦迪ครับ（仅辅助记忆）</div>
+<div class="actions"><button class="btn primary" id="speakBtn">🔊 播放泰语</button><button class="btn" id="slowBtn">🐢 慢速播放</button><button class="btn" id="repeatBtn">🔁 重复 3 次</button><button class="btn dark" id="knownBtn">✓ 我学会了</button></div>
+<p class="note" id="voiceNote">语音说明：使用设备浏览器的泰语语音合成（非真人录音）。若没有泰语语音，请在手机系统中安装泰语语音数据。</p>
+</section>
+<div class="nav"><button class="btn" id="prevBtn">← 上一句</button><button class="btn primary" id="nextBtn">下一句 →</button></div>
+<h2 class="section-title">日常场景课程</h2><div class="list" id="lessonList"></div>
+<footer>第一版 · 无需登录 · 语音由你的设备生成 · 学习进度保存在当前浏览器</footer>
+</main>
+<script>
+const data=[
+{cat:"问候",emoji:"👋",thai:"สวัสดีครับ",roman:"sa-wat-dee khrap",cn:"你好（男性说法）",approx:"萨瓦迪·ครับ",note:"女性通常说 สวัสดีค่ะ (sa-wat-dee kha)。"},
+{cat:"问候",emoji:"👋",thai:"สวัสดีค่ะ",roman:"sa-wat-dee kha",cn:"你好（女性说法）",approx:"萨瓦迪·卡",note:"ครับ/ค่ะ是礼貌语气词，按自己的说话习惯选择。"},
+{cat:"问候",emoji:"🙏",thai:"ขอบคุณครับ",roman:"khop-khun khrap",cn:"谢谢（男性说法）",approx:"阔普坤·ครับ",note:"女性说法：ขอบคุณค่ะ (khop-khun kha)。"},
+{cat:"问候",emoji:"🙏",thai:"ขอบคุณค่ะ",roman:"khop-khun kha",cn:"谢谢（女性说法）",approx:"阔普坤·卡",note:"说完谢谢时加礼貌语气词，会更自然。"},
+{cat:"餐厅",emoji:"🍜",thai:"อันนี้เท่าไหร่ครับ",roman:"an-nee thao-rai khrap",cn:"这个多少钱？（男性说法）",approx:"安尼·套莱·ครับ",note:"指向想买的物品，说 อันนี้ (这个)。"},
+{cat:"餐厅",emoji:"🍜",thai:"ไม่เผ็ดครับ",roman:"mai phet khrap",cn:"不要辣（男性说法）",approx:"麦·佩特·ครับ",note:"ไม่ (mai) 表示“不”；เผ็ด (phet) 表示辣。"},
+{cat:"餐厅",emoji:"🥤",thai:"ขอน้ำเปล่าครับ",roman:"kho nam plao khrap",cn:"请给我一杯白水（男性说法）",approx:"扣·南·漂·ครับ",note:"ขอ (kho) 有“请给我/我想要”的意思。"},
+{cat:"出行",emoji:"🚕",thai:"ไปสนามบินครับ",roman:"pai sa-nam-bin khrap",cn:"去机场（男性说法）",approx:"拜·萨南宾·ครับ",note:"可以把 สนามบิน (机场) 换成酒店名或地点。"},
+{cat:"出行",emoji:"🚕",thai:"จอดตรงนี้ครับ",roman:"jot trong-nee khrap",cn:"请在这里停车（男性说法）",approx:"卓·东尼·ครับ",note:"上车后可以指着地图位置说这句话。"},
+{cat:"购物",emoji:"🛍️",thai:"ลดได้ไหมครับ",roman:"lot dai mai khrap",cn:"可以便宜一点吗？（男性说法）",approx:"洛·代·麦·ครับ",note:"ตลาด (市场)里常用的简单砍价表达。"},
+{cat:"求助",emoji:"🆘",thai:"ช่วยด้วยครับ",roman:"chuai duai khrap",cn:"请帮帮我（男性说法）",approx:"吹·杜艾·ครับ",note:"紧急情况请同时联系当地工作人员或紧急服务。"},
+{cat:"问候",emoji:"🙂",thai:"ไม่เป็นไรครับ",roman:"mai pen rai khrap",cn:"没关系（男性说法）",approx:"麦·本·莱·ครับ",note:"也可用于回应道谢或表示不用客气。"}
+];
+const cats=["全部","问候","餐厅","出行","购物","求助"];let cat="全部",items=[...data],idx=0,learned=new Set(JSON.parse(localStorage.getItem("thaiLearned")||"[]")),timer=null;
+const $=id=>document.getElementById(id);
+function renderFilters(){$("filters").innerHTML=cats.map(c=>'<button class="chip '+(c===cat?'active':'')+'" data-cat="'+c+'">'+c+'</button>').join("");$("filters").querySelectorAll("button").forEach(b=>b.onclick=()=>{cat=b.dataset.cat;items=cat==="全部"?[...data]:data.filter(x=>x.cat===cat);idx=0;render()})}
+function render(){if(idx>=items.length)idx=0;let x=items[idx];$("sceneLabel").textContent=x.emoji+" "+x.cat;$("thaiText").textContent=x.thai;$("romanText").textContent=x.roman;$("meaningText").textContent=x.cn;$("approxText").textContent="中文近似："+x.approx+"（仅辅助记忆）";$("voiceNote").textContent="语音说明：使用设备浏览器的泰语语音合成（非真人录音）。"+x.note;$("lessonCount").textContent="第 "+(idx+1)+" 句 · 共 "+items.length+" 句";$("learnedCount").textContent="已学 "+learned.size+" 句";$("progressBar").style.width=(learned.size/data.length*100)+"%";$("knownBtn").textContent=learned.has(data.indexOf(x))?"✓ 已学会":"✓ 我学会了";renderFilters();renderLessons()}
+function speak(rate=0.85,repeats=1){if(!("speechSynthesis"in window)){alert("当前浏览器不支持语音合成，请尝试在手机 Chrome 中打开。");return}clearTimeout(timer);speechSynthesis.cancel();let x=items[idx],voices=speechSynthesis.getVoices(),v=voices.find(v=>v.lang.toLowerCase().startsWith("th"));if(!v)$("voiceNote").textContent="暂未找到设备泰语语音，浏览器可能使用默认语音或无法朗读。请安装泰语语音数据。"+x.note;let n=0;const play=()=>{if(n>=repeats)return;let u=new SpeechSynthesisUtterance(x.thai);u.lang="th-TH";u.rate=rate;if(v)u.voice=v;u.onend=()=>{n++;if(n<repeats)timer=setTimeout(play,350)};speechSynthesis.speak(u)};play()}
+function renderLessons(){$("lessonList").innerHTML=cats.slice(1).map(c=>{let n=data.filter(x=>x.cat===c).length;return '<button class="lesson" data-lesson="'+c+'"><span class="emoji">'+data.find(x=>x.cat===c).emoji+'</span><span><strong>'+c+'</strong><small>'+n+' 句实用表达</small></span><span class="arrow">›</span></button>'}).join("");$("lessonList").querySelectorAll("button").forEach(b=>b.onclick=()=>{cat=b.dataset.lesson;items=data.filter(x=>x.cat===cat);idx=0;render();window.scrollTo({top:0,behavior:"smooth"})})}
+$("speakBtn").onclick=()=>speak(.82,1);$("slowBtn").onclick=()=>speak(.55,1);$("repeatBtn").onclick=()=>speak(.72,3);$("prevBtn").onclick=()=>{idx=(idx-1+items.length)%items.length;render()};$("nextBtn").onclick=()=>{idx=(idx+1)%items.length;render()};$("knownBtn").onclick=()=>{let k=data.indexOf(items[idx]);if(learned.has(k))learned.delete(k);else learned.add(k);localStorage.setItem("thaiLearned",JSON.stringify([...learned]));render()};if("speechSynthesis"in window)speechSynthesis.getVoices();render();
+</script>
+</body></html>
